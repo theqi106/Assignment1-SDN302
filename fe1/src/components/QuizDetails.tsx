@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import QuestionForm from './QuestionForm';
-import { IQuestion, IQuiz } from '../constant/Question';
+import { IQuiz } from '../constant/Question';
 
 const QuizDetails: React.FC<{q: IQuiz}> = ({ q }) => {
     const [ quiz, setQuizD ] = useState<IQuiz>(q);

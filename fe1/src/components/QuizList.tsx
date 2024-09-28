@@ -24,7 +24,7 @@ const QuizList:React.FC<{ newQuiz?: IQuiz, onSelectQuiz:(quiz: IQuiz) => void }>
             <h2>Danh Sách Quiz</h2>
             <ul>
                 {quizzes.map(quiz => (
-                    <li key={quiz._id} onClick={() => { console.log(quiz) ; onSelectQuiz(quiz)}}>
+                    <li key={quiz._id} onClick={() => {onSelectQuiz(quiz)}}>
                         {quiz.title}
                     </li>
                 ))}

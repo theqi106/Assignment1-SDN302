@@ -41,6 +41,15 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+// DELETE questions/:questionId
+router.delete('/questions/:questionId', async (req, res) => {
+    try {
+        const deletedQuestion = await Question.findByIdAndDelete(req.params.questionId);
+        res.json(deletedQuestion);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 // POST /quizzes/:quizId/question
 router.post('/:quizId/question', async (req, res) => {
