@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+
 import React, { useState } from 'react'
 import { API_POST } from '../service/Quiz';
 import { IQuestion } from '../constant/Question';
@@ -11,8 +11,11 @@ const QuestionForm:React.FC<{ quizId: string, setQuizD: (q: IQuestion) => void }
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const question = { text, options, correctAnswerIndex };
-        setQuizD(question as unknown as IQuestion);
-        API_POST(`/quizzes/${quizId}/question`, question);
+        const quiz = await API_POST(`/quizzes/${quizId}/question`, question);
+        setQuizD(quiz as unknown as IQuestion);
+        setText('');
+        setOptions(['', '', '', '']);
+        setCorrectAnswerIndex('')
     };
 
     return (

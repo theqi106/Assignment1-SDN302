@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IQuiz } from '../constant/Question';
 import { API_DELETE, API_GET } from '../service/Quiz';
-import { useNavigate } from 'react-router-dom';
 import QuizDetails from './QuizDetail';
 import Header from '../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

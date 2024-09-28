@@ -7,13 +7,11 @@ import '../css/Question.css'
 import { API_DELETE } from '../service/Quiz';
 const QuizDetail: React.FC<{q: IQuiz }> = ({ q }) => {
     const [ quiz, setQuizD ] = useState<IQuiz>(q);
-    const [questions, setQuestion] = useState<IQuestion[]>([q.questions]);
     const deleteQues = async (quesId : string) => {
         try {
-            await API_DELETE(`/questions/${quesId}`);
-            setQuestion(questions.filter(question => question._id !== quesId));
+            await API_DELETE(`/quizzes/questions/${quesId}`);
+            setQuizD({ ...quiz,  questions: quiz.questions.filter(question => question._id !== quesId)});
         } catch (error) {
-            console.error('Error deleting quiz:', questions);
             alert('Error deleting quiz');
         }
     };

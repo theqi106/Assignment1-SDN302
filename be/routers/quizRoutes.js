@@ -50,6 +50,22 @@ router.delete('/questions/:questionId', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+//DELETE /quizzes/:quizId/questions
+router.delete('/quizzes/:quizId/questions', async (req, res) => {
+    try {
+        const quiz = await Quiz.findById(req.params.quizId);
+        if (!quiz) {
+            return res.status(404).json({ message: 'Quiz not found' });
+        }
+        await Question.deleteMany({ _id: { $in: quiz.questions } });
+        quiz.questions = [];
+        await quiz.save();
+
+        res.json({ message: 'All questions deleted successfully from quiz' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 // POST /quizzes/:quizId/question
 router.post('/:quizId/question', async (req, res) => {
