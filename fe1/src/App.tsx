@@ -5,7 +5,6 @@ import { IQuiz } from './constant/Question';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import CreateQuiz from './pages/CreateQuiz'
-import QuizDetail from './pages/QuizDetail'
 
 function App() {
   const [ newQuiz, setNewQuiz] = useState<IQuiz>();

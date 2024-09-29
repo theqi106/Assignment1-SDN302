@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { API_POST } from '../service/Quiz';
 import { IQuiz } from '../constant/Question';
 

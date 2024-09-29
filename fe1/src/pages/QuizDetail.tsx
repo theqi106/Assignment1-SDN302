@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import QuestionForm from '../components/QuestionForm';
-import { IQuestion, IQuiz } from '../constant/Question';
+import { IQuiz } from '../constant/Question';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import '../css/Question.css'
