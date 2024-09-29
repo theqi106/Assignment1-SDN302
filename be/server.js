@@ -9,7 +9,7 @@ dotenv.config();
 app.use(cors());
 
 const corsOptions = {
-    origin: 'http://localhost:5173', // Chỉ cho phép từ domain này
+    origin: 'https://ui-assignment-1-zhqu.onrender.com', // Chỉ cho phép từ domain này
     methods: 'GET,POST,PUT,DELETE', // Các phương thức được phép
     allowedHeaders: ['Content-Type', 'Authorization'], // Các header được phép
     credentials: true, // Cho phép gửi cookie hoặc xác thực
