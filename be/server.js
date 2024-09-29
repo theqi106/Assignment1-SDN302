@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const quizRoutes = require('./routers/quizRoutes');
 const cors = require('cors');
 const app = express();
-
+const dotenv = require('dotenv');
+dotenv.config();
 app.use(cors());
 
 const corsOptions = {
@@ -31,7 +32,7 @@ app.use(bodyParser.json());
 app.use('/quizzes', quizRoutes);
 
 // Kết nối với MongoDB
-mongoose.connect('mongodb://localhost/SimpleQuiz', {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
