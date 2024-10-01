@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+// GET /quizzes/:id
 router.get('/:id/questions', async (req, res) => {
     try {
         const quizzes = await Quiz.findById(req.params.id).populate('questions');
