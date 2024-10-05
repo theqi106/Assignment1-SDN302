@@ -108,5 +108,40 @@ router.get('/:quizId/populate', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+router.put('/:quizId', async (req, res) => {
+    console.log("quiz id",req.params.quizId);
+    try {
+        const { title, description } = req.body;
+        const updatedQuiz = await Quiz.findByIdAndUpdate(
+            req.params.quizId,
+            { title, description },
+            { new: true }
+        );
+        if (!updatedQuiz) {
+            return res.status(404).json({ message: 'Quiz not found' });
+        }
+        res.json(updatedQuiz); 
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+router.put('/question/:questionId', async (req, res) => {
+    const { questionId } = req.params;
+    const { text, options, correctAnswerIndex } = req.body;
+
+    try {
+        const updatedQuestion = await Question.findByIdAndUpdate(
+            questionId,
+            { text, options, correctAnswerIndex },
+            { new: true }
+        );
+        if (!updatedQuestion) {
+            return res.status(404).send('Question not found');
+        }
+        res.status(200).json(updatedQuestion);
+    } catch (error) {
+        res.status(500).send('Error updating question');
+    }
+});
 
 module.exports = router;
